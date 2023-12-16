@@ -23,11 +23,6 @@ body {
     width: 30rem;
 }
 
-@media (max-width:760px) {
-    .container {
-        width: 90%;
-    }
-}
 
 .header{
     display: flex;
