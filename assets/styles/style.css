@@ -20,7 +20,7 @@ body {
 }
 
 .container {
-    width: 40em;
+    width: 30em;
 }
 
 @media (max-width:760px) {
