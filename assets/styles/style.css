@@ -33,6 +33,7 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    background-color: aqua;
 }
 
 .heading {
@@ -46,17 +47,16 @@ body {
 
 
 .music-container {
-    background: rgb(66, 16, 11);
-    background: linear-gradient(16deg, rgba(52, 11, 66, 1) 6%, rgba(47, 12, 74, 1) 29%, rgba(52, 11, 66, 1) 48%, rgba(39, 12, 74, 1) 70%, rgba(52, 11, 66, 1) 100%);
+    background: rgb(255, 255, 255);
     border-radius: 1rem;
     box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.4);
     padding: 1rem 2rem;
-    margin-top: 7rem;
+    margin-top: 5rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    color: #2ae249;
+    color: #000000;
 }
 
 #cover-box {
@@ -64,8 +64,8 @@ body {
     box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.4);
     position: relative;
     bottom: 5em;
-    width: 85%;
-    height: 42em;
+    width: 70%;
+    height: 25rem;
 }
 
 #cover {
