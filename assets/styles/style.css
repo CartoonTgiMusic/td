@@ -118,13 +118,13 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 1rem;
+    padding:  1rem;
 }
 
 .btn {
     display: inline-block;
     font-size: 1.6rem;
-    padding: 1rem;
+    padding:0 3rem;
     cursor: pointer;
     border: none;
     outline: none;
