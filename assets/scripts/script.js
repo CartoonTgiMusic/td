@@ -73,11 +73,11 @@ function playPauseMedia() {
 // Update icon
 function updatePlayPauseIcon() {
     if (disc.paused) {
-        play.classList.remove('fa-pause');
-        play.classList.add('fa-play');
+        play.classList.remove('fa-circle-pause');
+        play.classList.add('fa-circle-play');
     } else {
-        play.classList.remove('fa-play');
-        play.classList.add('fa-pause');
+        play.classList.remove('fa-circle-play');
+        play.classList.add('fa-circle-pause');
     }
 }
 
