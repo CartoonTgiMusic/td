@@ -15,12 +15,13 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 80vh;
+    height: 85vh;
     -webkit-tap-highlight-color: transparent;
 }
 
 .container {
-    width: 30rem;
+    margin-top: 10px;
+    width: 40rem;
 }
 
 
@@ -127,8 +128,8 @@ a{
 
 .btn {
     display: inline-block;
-    font-size: 1.6rem;
-    padding:1rem;
+    font-size: 2rem;
+    padding:2rem;
     cursor: pointer;
     border: none;
     outline: none;
@@ -139,7 +140,7 @@ a{
 
 .special-btn {
     color: black;
-    font-size: 4rem;
+    font-size: 6rem;
     margin: 0 1rem;
     padding: 1.4rem;
     cursor: pointer;
