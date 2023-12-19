@@ -11,7 +11,7 @@ html {
 body {
     font-family: 'Poppins', 'Montserrat', sans-serif;
     background-color: #232328;
-    background: rgb(62, 128, 194);
+    background: rgb(251, 251, 251);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -21,9 +21,9 @@ body {
 
 .container {
     margin-top: 2rem;
+    margin-bottom: 2rem;
     width: 40rem;
     height: 85vh;
-    background-color: red;
 }
 
 
@@ -131,7 +131,7 @@ a{
 .btn {
     display: inline-block;
     font-size: 2rem;
-    padding:2rem;
+    padding: 2rem;
     cursor: pointer;
     border: none;
     outline: none;
