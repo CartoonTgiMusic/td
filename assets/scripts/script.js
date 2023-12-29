@@ -1,191 +1,250 @@
-const cover = document.getElementById('cover');
-const disc = document.getElementById('disc');
-const title = document.getElementById('title');
-const artist = document.getElementById('artist');
-const progressContainer = document.getElementById('progress-container');
-const progress = document.getElementById('progress');
-const timer = document.getElementById('timer');
-const duration = document.getElementById('duration');
-const prev = document.getElementById('prev');
-const play = document.getElementById('play');
-const next = document.getElementById('next');
-let songIndex = 0;
+let track_art = document.querySelector('.track-art');
+let track_name = document.querySelector('.track-name');
+let track_artist = document.querySelector('.track-artist');
+let track_writer = document.querySelector('.track-writer');
 
-// Songs info
-const songs = [{
-        title: 'ဗေသိမ်',
-        artist: 'တဲမ်း/ရွှစ်-ခွန်ပဒဲကော',
-        coverPath: 'img/track1.jpg',
-        discPath: 'music/track1.mp3',
+let playpause_btn = document.querySelector('.playpause-track');
+let next_btn = document.querySelector('.next-track');
+let prev_btn = document.querySelector('.prev-track');
+
+let seek_slider = document.querySelector('.seek_slider');
+let volume_slider = document.querySelector('.volume_slider');
+let curr_time = document.querySelector('.current-time');
+let total_duration = document.querySelector('.total-duration');
+let randomIcon = document.querySelector('.fa-random');
+let loopIcon = document.querySelector('.fa-repeat')
+let curr_track = document.createElement('audio');
+
+let track_index = 0;
+let isPlaying = false;
+let isRandom = false;
+let isLoop = false;
+let updateTimer;
+
+const music_list = [
+    {
+        img : 'assets/images/tdimgs/cover5.jpg',
+        name : 'အရက်ꩻသွတ်ꩻ',
+        artist : 'ခွန်ပဒဲကော',
+        writer : 'တဲမ်း-ခွန်ပဒဲကော',
+        music : 'assets/musics/tdaudios/music4.mp3'
+    },
+    
+    {
+        img : 'assets/images/tdimgs/cover4.jpg',
+        name : 'မွိုးသောက',
+        artist : 'ခွန်ချို',
+        writer : 'တဲမ်း-ခွန်တင်ဦး',
+        music : 'assets/musics/tdaudios/music2.mp3'
     },
     {
-        title: 'သရာပငွေါဝ်းသချင်',
-        artist: 'တဲမ်း/ရွှစ်-ခွန်ပဒဲကော',
-        coverPath: 'img/track2.jpg',
-        discPath: 'music/track2.mp3',
+        img : 'assets/images/tdimgs/cover3.jpg',
+        name : 'ဆာႏပေႏ',
+        artist : 'ခွန်ပျူ',
+        writer : 'တဲမ်း-ခွန်ပဒဲကော',
+        music : 'assets/musics/tdaudios/music4.mp3'
+    },
+    
+    {
+        img : 'assets/images/tdimgs/cover1.jpg',
+        name : 'နင်ႏလိင်ႏလဲဥ်',
+        artist : 'ခွန်ခွန်ကျော်ဦး',
+        writer : 'တဲမ်း-ခွန်ပဒဲကော',
+        music : 'assets/musics/tdaudios/music3.mp3'
+    },
+    
+    {
+        img : 'assets/images/tdimgs/cover4.jpg',
+        name : 'ယူႏငါႏမွုန်းဒွုမ်',
+        artist : 'ခွန်ချို',
+        writer : 'တဲမ်း-ခွန်ခွန်ကျော်ဦး',
+        music : 'assets/musics/tdaudios/music4.mp3'
+    },
+    
+    {
+        img : 'assets/images/tdimgs/cover3.jpg',
+        name : 'ဝါးပေꩻဗွါ',
+        artist : 'ခွန်ပျူ',
+        writer : 'တဲမ်း-ခွန်တင်ဦး',
+        music : 'assets/musics/tdaudios/music5.mp3'
+    },
+    
+    {
+        img : 'assets/images/tdimgs/cover1.jpg',
+        name : 'တဒွီ',
+        artist : 'ခွန်ခွန်ကျော်ဦး',
+        writer : 'တဲမ်း-ခွန်တင်ဦး',
+        music : 'assets/musics/tdaudios/music6.mp3'
+    },
+    
+    {
+        img : 'assets/images/tdimgs/cover5.jpg',
+        name : 'သꩻရာႏတꩻခါꩻ',
+        artist : 'ခွန်ပဒဲကော',
+        writer : 'တဲမ်း-ခွန်ခွန်ကျော်ဦး',
+        music : 'assets/musics/tdaudios/music7.mp3'
+    },
+    
+    {
+        img : 'assets/images/tdimgs/cover4.jpg',
+        name : 'သွꩻမူႏ',
+        artist : 'ခွန်ချို',
+        writer : 'တဲမ်း-ခွန်ပျူ',
+        music : 'assets/musics/tdaudios/music8.mp3'
     },
     {
-        title: 'ကြိုက်ကြိုက်မကြိုက်ကြိုက်',
-        artist: 'တဲမ်း/ရွှစ်-ခွန်ပဒဲကော',
-        coverPath: 'img/track3.jpg',
-        discPath: 'music/track3.mp3',
+        img : 'assets/images/tdimgs/cover1.jpg',
+        name : 'ဒေါ့ꩻနွောဝ်ꩻမွုန်းခွေꩻ',
+        artist : 'ခွန်ခွန်ကျော်ဦး',
+        writer : 'တဲမ်း-ခွန်ခွန်ကျော်ဦး',
+        music : 'assets/musics/tdaudios/music9.mp3'
     },
+    
     {
-        title: 'ကျော်ဦး',
-        artist: 'တဲမ်း/ရွှစ်-ကျော်ဦး',
-        coverPath: 'img/track4.jpg',
-        discPath: 'music/track4.mp3',
+        img : 'assets/images/tdimgs/cover5.jpg',
+        name : 'ယူႏလꩻခွင်ꩻ',
+        artist : 'ခွန်ပဒဲကော',
+        writer : 'တဲမ်း-ခွန်တင်ဦး',
+        music : 'assets/musics/tdaudios/music10.mp3'
     },
+    
+    {
+        img : 'assets/images/tdimgs/cover3.jpg',
+        name : 'ဝေးမူႏ',
+        artist : 'ခွန်ပျူ',
+        writer : 'တဲမ်း-ခွန်ပျူ',
+        music : 'assets/musics/tdaudios/music11.mp3'
+    },
+    
+    {
+        img : 'assets/images/mimgs/logo.jpg',
+        name : 'ဖေႏမွုန်းအသွုမ်ꩻ',
+        artist : 'ကာတွန်းစွိုꩻ',
+        writer : 'တဲမ်း-ခွန်ခွန်ကျော်ဦး',
+        music : 'assets/musics/tdaudios/music12.mp3'
+    },
+    
 ];
+    
+    
+   
 
-window.addEventListener('load', function() {
-    // Load song initially
-    loadSong(songs[songIndex]);
-})
+loadTrack(track_index);
 
+function loadTrack(track_index){
+    clearInterval(updateTimer);
+    reset();
 
-// Load the given song
-function loadSong(song) {
-    var dur = 0;
-    cover.src = song.coverPath;
-    disc.src = song.discPath;
-    title.textContent = song.title;
-    artist.textContent = song.artist;
-    disc.addEventListener('canplaythrough', function() {
-        dur = disc.duration
-        mins = Math.floor(Math.abs(dur / 60))
-        mins = String(mins).padStart('2', 0)
-        sec = Math.floor(dur - (parseInt(mins) * 60))
-        sec = String(sec).padStart('2', 0)
-        duration.textContent = `${mins}:${sec}`
-    })
+    curr_track.src = music_list[track_index].music;
+    curr_track.load();
+
+    track_art.style.backgroundImage = "url(" + music_list[track_index].img + ")";
+    track_name.textContent = music_list[track_index].name;
+    track_artist.textContent = music_list[track_index].artist;
+    track_writer.textContent = music_list[track_index].writer;
+    
+
+    updateTimer = setInterval(setUpdate, 1000);
+
+    curr_track.addEventListener('ended', nextTrack);
+   
 }
 
-// Toggle play and pause
-function playPauseMedia() {
-    if (disc.paused) {
-        disc.play();
-    } else {
-        disc.pause();
+
+function reset(){
+    curr_time.textContent = "00:00";
+    total_duration.textContent = "00:00";
+    seek_slider.value = 0;
+}
+function randomTrack(){
+    isRandom ? pauseRandom() : playRandom();
+}
+function playRandom(){
+    isRandom = true;
+    randomIcon.classList.add('randomActive');
+}
+function pauseRandom(){
+    isRandom = false;
+    randomIcon.classList.remove('randomActive');
+}
+function playLoop(){
+    isLoop = true;
+    loopIcon.classList.add('loopActive')
+}
+function pauseLoop(){
+    isLoop = false;
+    loopIcon.classList.remove('loopActive');
+}
+ 
+function repeatTrack(){
+    if(curr_track.loop != true){
+        curr_track.loop = true;
+        curr_track.play();
+        playLoop();
+      } else {
+        curr_track.loop = false;
+        pauseLoop();
+    }}
+function playpauseTrack(){
+    isPlaying ? pauseTrack() : playTrack();
+}
+function playTrack(){
+    curr_track.play();
+    isPlaying = true;
+    track_art.classList.add('rotate');
+    playpause_btn.innerHTML = '<i class="fa fa-pause-circle fa-5x"></i>';
+}
+function pauseTrack(){
+    curr_track.pause();
+    isPlaying = false;
+    track_art.classList.remove('rotate');
+    playpause_btn.innerHTML = '<i class="fa fa-play-circle fa-5x"></i>';
+}
+function nextTrack(){
+    if(track_index < music_list.length - 1 && isRandom === false){
+        track_index += 1;
+    }else if(track_index < music_list.length - 1 && isRandom === true){
+        let random_index = Number.parseInt(Math.random() * music_list.length);
+        track_index = random_index;
+    }else{
+        track_index = 0;
+    }
+    loadTrack(track_index);
+    playTrack();
+}
+function prevTrack(){
+    if(track_index > 0){
+        track_index -= 1;
+    }else{
+        track_index = music_list.length -1;
+    }
+    loadTrack(track_index);
+    playTrack();
+}
+function seekTo(){
+    let seekto = curr_track.duration * (seek_slider.value / 100);
+    curr_track.currentTime = seekto;
+}
+function setVolume(){
+    curr_track.volume = volume_slider.value / 100;
+}
+function setUpdate(){
+    let seekPosition = 0;
+    if(!isNaN(curr_track.duration)){
+        seekPosition = curr_track.currentTime * (100 / curr_track.duration);
+        seek_slider.value = seekPosition;
+
+        let currentMinutes = Math.floor(curr_track.currentTime / 60);
+        let currentSeconds = Math.floor(curr_track.currentTime - currentMinutes * 60);
+        let durationMinutes = Math.floor(curr_track.duration / 60);
+        let durationSeconds = Math.floor(curr_track.duration - durationMinutes * 60);
+
+        if(currentSeconds < 10) {currentSeconds = "0" + currentSeconds; }
+        if(durationSeconds < 10) { durationSeconds = "0" + durationSeconds; }
+        if(currentMinutes < 10) {currentMinutes = "0" + currentMinutes; }
+        if(durationMinutes < 10) { durationMinutes = "0" + durationMinutes; }
+
+        curr_time.textContent = currentMinutes + ":" + currentSeconds;
+        total_duration.textContent = durationMinutes + ":" + durationSeconds;
     }
 }
-
-// Update icon
-function updatePlayPauseIcon() {
-    if (disc.paused) {
-        play.classList.remove('fa-circle-pause');
-        play.classList.add('fa-circle-play');
-    } else {
-        play.classList.remove('fa-circle-play');
-        play.classList.add('fa-circle-pause');
-    }
-}
-
-// Update progress bar
-function updateProgress() {
-    progress.style.width = (disc.currentTime / disc.duration) * 100 + '%';
-
-    let minutes = Math.floor(disc.currentTime / 60);
-    let seconds = Math.floor(disc.currentTime % 60);
-    if (seconds < 10) {
-        seconds = '0' + seconds;
-    }
-    timer.textContent = `${minutes}:${seconds}`;
-}
-
-// Reset the progress
-function resetProgress() {
-    progress.style.width = 0 + '%';
-    timer.textContent = '0:00';
-}
-
-// Go to previous song
-function gotoPreviousSong() {
-    if (songIndex === 0) {
-        songIndex = songs.length - 1;
-    } else {
-        songIndex = songIndex - 1;
-    }
-
-    const isDiscPlayingNow = !disc.paused;
-    loadSong(songs[songIndex]);
-    resetProgress();
-    if (isDiscPlayingNow) {
-        playPauseMedia();
-    }
-}
-
-// Go to next song
-function gotoNextSong(playImmediately) {
-    if (songIndex === songs.length - 1) {
-        songIndex = 0;
-    } else {
-        songIndex = songIndex + 1;
-    }
-
-    const isDiscPlayingNow = !disc.paused;
-    loadSong(songs[songIndex]);
-    resetProgress();
-    if (isDiscPlayingNow || playImmediately) {
-        playPauseMedia();
-    }
-}
-
-// Change song progress when clicked on progress bar
-function setProgress(ev) {
-    const totalWidth = this.clientWidth;
-    const clickWidth = ev.offsetX;
-    const clickWidthRatio = clickWidth / totalWidth;
-    disc.currentTime = clickWidthRatio * disc.duration;
-}
-
-// Navigate song slider
-function progressSlider(ev) {
-    var is_playing = !disc.paused
-    if (is_playing)
-        disc.pause()
-    const totalWidth = this.clientWidth;
-    const clickWidth = ev.offsetX;
-    const clickWidthRatio = clickWidth / totalWidth;
-    disc.currentTime = clickWidthRatio * disc.duration;
-    if (is_playing)
-        disc.play()
-    document.addEventListener('mousemove', slideMoving);
-    document.addEventListener('mouseup', function() {
-        if (is_playing)
-            disc.play()
-        document.removeEventListener('mousemove', slideMoving);
-    });
-
-}
-
-// Navigate song slider while moving
-function slideMoving(ev) {
-    var is_playing = !disc.paused
-    if (is_playing)
-        disc.pause()
-    const totalWidth = progressContainer.clientWidth;
-    const clickWidth = ev.offsetX;
-    const clickWidthRatio = clickWidth / totalWidth;
-    disc.currentTime = clickWidthRatio * disc.duration;
-    if (is_playing)
-        disc.play()
-}
-
-// Play/Pause when play button clicked
-play.addEventListener('click', playPauseMedia);
-
-// Various events on disc
-disc.addEventListener('play', updatePlayPauseIcon);
-disc.addEventListener('pause', updatePlayPauseIcon);
-disc.addEventListener('timeupdate', updateProgress);
-disc.addEventListener('ended', gotoNextSong.bind(null, true));
-
-// Go to next song when next button clicked
-prev.addEventListener('click', gotoPreviousSong);
-
-// Go to previous song when previous button clicked
-next.addEventListener('click', gotoNextSong.bind(null, false));
-
-// Move to different place in the song
-progressContainer.addEventListener('mousedown', progressSlider);
