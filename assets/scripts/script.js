@@ -157,6 +157,7 @@ function reset(){
     seek_slider.value = 0;
 }
 function randomTrack(){
+    pauseLoop();
     isRandom ? pauseRandom() : playRandom();
 }
 function playRandom(){
@@ -177,6 +178,7 @@ function pauseLoop(){
 }
  
 function repeatTrack(){
+    pauseRandom();
     if(curr_track.loop != true){
         curr_track.loop = true;
         curr_track.play();
