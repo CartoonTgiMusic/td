@@ -37,6 +37,10 @@ body {
     margin:0px 15px;
     text-shadow:3px 0px 3px rgb(0, 0, 0);
   }
+  .fa-house:hover,
+  .fa-list:hover{
+    transform: scale(1.2);
+  }
   
   .details {
   display: flex;
