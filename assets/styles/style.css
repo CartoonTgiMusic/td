@@ -28,6 +28,7 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
     
   }
 
@@ -38,7 +39,7 @@ body {
     text-shadow:3px 0px 3px rgb(0, 0, 0);
   }
   .fa-house:hover,
-  .fa-list:hover{
+  .fa-bars:hover{
     transform: scale(1.2);
   }
   
