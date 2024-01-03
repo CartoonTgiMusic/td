@@ -27,7 +27,7 @@ const music_list = [
         name : 'အရက်ꩻသွတ်ꩻ',
         artist : 'ခွန်ပဒဲကော',
         writer : 'တဲမ်း-ခွန်ပဒဲကော',
-        music : 'assets/musics/tdaudios/music4.mp3'
+        music : 'assets/music/music4.mp3'
     },
     
     {
@@ -35,14 +35,14 @@ const music_list = [
         name : 'မွိုးသောက',
         artist : 'ခွန်ချို',
         writer : 'တဲမ်း-ခွန်တင်ဦး',
-        music : 'assets/musics/tdaudios/music2.mp3'
+        music : 'assets/music/music2.mp3'
     },
     {
         img : 'assets/images/tdimgs/cover3.jpg',
         name : 'ဆာႏပေႏ',
         artist : 'ခွန်ပျူ',
         writer : 'တဲမ်း-ခွန်ပဒဲကော',
-        music : 'assets/musics/tdaudios/music4.mp3'
+        music : 'assets/music/music4.mp3'
     },
     
     {
@@ -50,7 +50,7 @@ const music_list = [
         name : 'နင်ႏလိင်ႏလဲဥ်',
         artist : 'ခွန်ခွန်ကျော်ဦး',
         writer : 'တဲမ်း-ခွန်ပဒဲကော',
-        music : 'assets/musics/tdaudios/music3.mp3'
+        music : 'assets/music/music3.mp3'
     },
     
     {
@@ -58,7 +58,7 @@ const music_list = [
         name : 'ယူႏငါႏမွုန်းဒွုမ်',
         artist : 'ခွန်ချို',
         writer : 'တဲမ်း-ခွန်ခွန်ကျော်ဦး',
-        music : 'assets/musics/tdaudios/music4.mp3'
+        music : 'assets/music/music4.mp3'
     },
     
     {
@@ -66,7 +66,7 @@ const music_list = [
         name : 'ဝါးပေꩻဗွါ',
         artist : 'ခွန်ပျူ',
         writer : 'တဲမ်း-ခွန်တင်ဦး',
-        music : 'assets/musics/tdaudios/music5.mp3'
+        music : 'assets/music/music5.mp3'
     },
     
     {
@@ -74,7 +74,7 @@ const music_list = [
         name : 'တဒွီ',
         artist : 'ခွန်ခွန်ကျော်ဦး',
         writer : 'တဲမ်း-ခွန်တင်ဦး',
-        music : 'assets/musics/tdaudios/music6.mp3'
+        music : 'assets/music/music6.mp3'
     },
     
     {
@@ -82,7 +82,7 @@ const music_list = [
         name : 'သꩻရာႏတꩻခါꩻ',
         artist : 'ခွန်ပဒဲကော',
         writer : 'တဲမ်း-ခွန်ခွန်ကျော်ဦး',
-        music : 'assets/musics/tdaudios/music7.mp3'
+        music : 'assets/music/music7.mp3'
     },
     
     {
@@ -90,14 +90,14 @@ const music_list = [
         name : 'သွꩻမူႏ',
         artist : 'ခွန်ချို',
         writer : 'တဲမ်း-ခွန်ပျူ',
-        music : 'assets/musics/tdaudios/music8.mp3'
+        music : 'assets/music/music8.mp3'
     },
     {
         img : 'assets/images/tdimgs/cover1.jpg',
         name : 'ဒေါ့ꩻနွောဝ်ꩻမွုန်းခွေꩻ',
         artist : 'ခွန်ခွန်ကျော်ဦး',
         writer : 'တဲမ်း-ခွန်ခွန်ကျော်ဦး',
-        music : 'assets/musics/tdaudios/music9.mp3'
+        music : 'assets/music/music9.mp3'
     },
     
     {
@@ -105,7 +105,7 @@ const music_list = [
         name : 'ယူႏလꩻခွင်ꩻ',
         artist : 'ခွန်ပဒဲကော',
         writer : 'တဲမ်း-ခွန်တင်ဦး',
-        music : 'assets/musics/tdaudios/music10.mp3'
+        music : 'assets/music/music10.mp3'
     },
     
     {
@@ -113,7 +113,7 @@ const music_list = [
         name : 'ဝေးမူႏ',
         artist : 'ခွန်ပျူ',
         writer : 'တဲမ်း-ခွန်ပျူ',
-        music : 'assets/musics/tdaudios/music11.mp3'
+        music : 'assets/music/music11.mp3'
     },
     
     {
@@ -121,7 +121,7 @@ const music_list = [
         name : 'ဖေႏမွုန်းအသွုမ်ꩻ',
         artist : 'ကာတွန်းစွိုꩻ',
         writer : 'တဲမ်း-ခွန်ခွန်ကျော်ဦး',
-        music : 'assets/musics/tdaudios/music12.mp3'
+        music : 'assets/music/music12.mp3'
     },
     
 ];
