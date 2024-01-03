@@ -117,7 +117,7 @@ const music_list = [
     },
     
     {
-        img : 'assets/images/mimgs/logo.jpg',
+        img : 'assets/images/mimgs/logo.png',
         name : 'ဖေႏမွုန်းအသွုမ်ꩻ',
         artist : 'ကာတွန်းစွိုꩻ',
         writer : 'တဲမ်း-ခွန်ခွန်ကျော်ဦး',
