@@ -181,9 +181,6 @@ body {
   .randomActive{
       color:rgb(244, 64, 64);
   }
-  .loopActive{
-    color: red;
-  }
   .rotate {
       animation: rotation 8s infinite linear;
   }
